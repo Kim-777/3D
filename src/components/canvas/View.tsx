@@ -1,10 +1,14 @@
 'use client'
 
-import { forwardRef, Suspense, useImperativeHandle, useRef } from 'react'
+import { CSSProperties, forwardRef, HTMLAttributes, ReactNode, Suspense, useImperativeHandle, useRef } from 'react'
 import { OrbitControls, PerspectiveCamera, View as ViewImpl } from '@react-three/drei'
 import { Three } from '@/helpers/components/Three'
 
-export const Common = ({ color }) => (
+type CommonProps = {
+  color?: CSSProperties["color"];
+}
+
+export const Common = ({ color }: CommonProps) => (
   <Suspense fallback={null}>
     {color && <color attach='background' args={[color]} />}
     <ambientLight />
@@ -14,7 +18,13 @@ export const Common = ({ color }) => (
   </Suspense>
 )
 
-const View = forwardRef(({ children, orbit, ...props }, ref) => {
+
+type ViewProps = {
+  children: ReactNode;
+  orbit?: any;
+} & HTMLAttributes<HTMLDivElement>;
+
+const View = forwardRef(({ children, orbit, ...props }:ViewProps, ref) => {
   const localRef = useRef(null)
   useImperativeHandle(ref, () => localRef.current)
 

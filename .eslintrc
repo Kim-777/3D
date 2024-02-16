@@ -1,9 +1,18 @@
 {
-  "extends": ["next", "prettier", "plugin:tailwindcss/recommended"],
+  "extends": [
+    "plugin:@shoplflow/typescript",
+    "plugin:@shoplflow/react",
+    "plugin:@shoplflow/base"
+  ],
+  "plugins": [
+    "@shoplflow"
+  ],
   "rules": {
+    "@typescript-eslint/naming-convention": "off",
     "import/prefer-default-export": "off",
     "no-console": "warn",
     "no-var": "error",
-    "no-html-link-for-pages": "off"
+    "no-html-link-for-pages": "off",
+    "react/no-unknown-property": "off"
   }
 }
