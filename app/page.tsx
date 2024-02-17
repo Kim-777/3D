@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
+import MarqueeText from './_components/MarqueeText';
 
 const Logo = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Logo), { ssr: false });
 const Dog = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Dog), { ssr: false });
@@ -30,6 +31,10 @@ export default function Page() {
         {/* jumbo */}
         <div className='flex w-full flex-col items-start justify-center p-12 text-center md:w-2/5 md:text-left'>
           <p className='w-full uppercase'>Next + React Three Fiber</p>
+          <div style={{ width: '200px', backgroundColor: 'red', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+            <MarqueeText text='나는 무한하게 이어져 나오는 텍스트야~ 왠지 알아 뚜비두밥?' />
+          </div>
+
           <h1 className='my-4 text-5xl font-bold leading-tight'>Next 3D Starter</h1>
           <p className='mb-8 text-2xl leading-normal'>A minimalist starter for React, React-three-fiber and Threejs.</p>
         </div>
